@@ -1,0 +1,12 @@
+{
+  "cSpell.words": [
+    "actix",
+    "allprojects",
+    "chrono",
+    "dotenv",
+    "parkingappdb",
+    "retryable",
+    "sqlx",
+    "thiserror"
+  ]
+}

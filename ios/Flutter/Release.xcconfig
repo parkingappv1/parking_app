@@ -1,0 +1,23 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+// Optimize for app store distribution
+FLUTTER_BUILD_MODE=release
+FLUTTER_BUILD_NAME=1.0.0
+FLUTTER_BUILD_NUMBER=1
+
+// iOS deployment optimizations
+IPHONEOS_DEPLOYMENT_TARGET=14.0
+ENABLE_BITCODE=NO
+STRIP_INSTALLED_PRODUCT=YES
+COPY_PHASE_STRIP=YES
+
+// Swift and build optimizations
+SWIFT_OPTIMIZATION_LEVEL=-O
+GCC_OPTIMIZATION_LEVEL=s
+SWIFT_COMPILATION_MODE=wholemodule
+
+// Security and performance settings
+ENABLE_NS_ASSERTIONS=NO
+VALIDATE_PRODUCT=YES
+DEAD_CODE_STRIPPING=YES
