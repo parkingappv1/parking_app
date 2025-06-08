@@ -15,6 +15,9 @@ use crate::controllers::parking_search_controller::{
     get_parking_lot_detail_controller,
 };
 
+use crate::controllers::user_home_controller::{get_favorites, get_parking_search_history, get_parking_status, update_parking_status};
+use crate::controllers::use_history_controller::{get_parking_use_history, get_parking_use_history_detail, get_parking_features};
+
 pub fn init_routes(cfg: &mut web::ServiceConfig) {
     // Health check endpoints
     cfg.service(health_check);
@@ -28,6 +31,13 @@ pub fn init_routes(cfg: &mut web::ServiceConfig) {
             .service(refresh_token)
             .service(get_current_user)
             .service(get_csrf_token)
+            .service(get_parking_status)
+            .service(update_parking_status)
+            .service(get_parking_search_history)
+            .service(get_favorites)
+            .service(get_parking_use_history)
+            .service(get_parking_use_history_detail)
+            .service(get_parking_features)
             .service(
                 web::scope("/password-reset")
                     .service(request_password_reset)

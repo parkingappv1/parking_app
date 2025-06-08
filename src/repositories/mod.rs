@@ -26,6 +26,11 @@ pub use auth_signup_repository::AuthSignupRepository;
 pub mod parking_search_repository;
 pub use parking_search_repository::ParkingSearchRepository;
 
+pub mod user_home_repository;
+pub use user_home_repository::UserHomeRepository;
+
+pub mod use_history_repository;
+pub use use_history_repository::UseHistoryRepository;
 
 // Common repository utilities and interfaces
 mod repository_utils {

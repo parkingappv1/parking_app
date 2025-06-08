@@ -169,6 +169,18 @@ class ApiConstants {
   /// 利用履歴
   static const String PARKING_HISTORY = '$PARKING_BASE/history';
 
+  // ==================== ユーザホーム関連エンドポイント ====================
+  static const String PARKING_STATUS = '$AUTH_BASE/parking-status';
+  static const String UPDATE_STATUS = '$AUTH_BASE/update-status';
+  static const String SEARCH_HISTORY = '$AUTH_BASE/search-history';
+  static const String FFAVORITES = '$AUTH_BASE/favorites';
+
+  // ==================== 利用履歴関連エンドポイント ====================
+  static const String USE_HISTORY = '$AUTH_BASE/use-history';
+  static const String USE_HISTORY_DETAIL = '$AUTH_BASE/use-history-detail';
+  static const String PARKING_FEATURES = '$AUTH_BASE/parking-features';
+  static const String PARKING_LOTS = '$AUTH_BASE/parking-lots';
+
   // ==================== APIレスポンス構造 ====================
 
   /// 成功フラグキー

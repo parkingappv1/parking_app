@@ -28,6 +28,11 @@ pub use auth_signup_service::AuthSignupService;
 pub mod parking_search_service;
 pub use parking_search_service::ParkingSearchService;
 
+pub mod user_home_service;
+pub use user_home_service::UserHomeService;
+pub mod use_history_service;
+pub use use_history_service::UseHistoryService;
+
 /// サービス層の初期化関数
 pub fn init() {
     use tracing::info;

@@ -44,12 +44,30 @@ Future<void> main() async {
   }
 }
 
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
+
+  @override
+  createState() => _MyAppState();
+}
+
 /// メインアプリケーションウィジェット
 ///
 /// アプリのテーマ、国際化、ルーティングを設定し、
 /// 全体的なアプリケーション構造を定義する
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +97,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('zh'), // Chinese
       ],
-      locale: const Locale('ja'), // Set Japanese as default locale
+      locale: _locale ?? Locale('ja'), // Set Japanese as default locale
       // =================================================================
       // TITLE GENERATION
       // =================================================================
@@ -432,6 +450,26 @@ class _SplashScreenState extends State<SplashScreen>
           ),
         ),
       ],
+    );
+  }
+}
+
+class LanguageSwitcher extends StatelessWidget {
+  const LanguageSwitcher({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<Locale>(
+      icon: Icon(Icons.language),
+      onSelected: (locale) {
+        MyApp.setLocale(context, locale);
+      },
+      itemBuilder:
+          (context) => [
+            PopupMenuItem(value: Locale('en'), child: Text('English')),
+            PopupMenuItem(value: Locale('ja'), child: Text('日本語')),
+            PopupMenuItem(value: Locale('zh'), child: Text('中文')),
+          ],
     );
   }
 }

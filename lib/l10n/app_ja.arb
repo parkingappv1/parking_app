@@ -491,5 +491,37 @@
     "accountTab": "アカウント",
     "@accountTab": {
         "description": "Account tab label"
-    }
+    },
+
+    "parkingStatus": "入出庫状況",
+    "checkIn": "入庫",
+    "checkOut": "出庫",
+    "recentSearches": "最近の検索履歴",
+    "favorites": "お気に入り",
+    "home": "ホーム",
+    "search": "検索",
+    "history": "履歴",
+    "account": "アカウント",
+    "reservationStart": "予約開始時間:",
+    "reservationEnd": "予約終了時間:",
+    "entryDate": "入庫時間:",
+    "exitDate": "出庫時間:",
+    "keyword": "キーワード:",
+    "carType": "車種:",
+    "rentalType": "貸出タイプ:",
+    "useStartDate": "利用開始日時:",
+    "useEndDate": "利用終了日時:",
+    "checkInConfirmTitle": "入庫確認",
+    "checkInConfirmMessage": "入庫してよろしいでしょうか。",
+    "checkOutConfirmTitle": "出庫確認",
+    "checkOutConfirmMessage": "出庫してよろしいでしょうか。",
+    "cancel": "取消",
+    "confirm": "確定",
+    "noReservation": "予約情報なし",
+    "noSearchHistory": "検索履歴情報なし",
+    "noFavorite": "お気に入り情報なし",
+    "historys": "入出庫履歴",
+    "noUseHistory": "利用履歴情報なし",
+    "features": "駐車場の特徴",
+    "nofeatures": "特徴なし"
 }

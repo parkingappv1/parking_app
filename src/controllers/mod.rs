@@ -29,7 +29,8 @@ pub mod auth_signup_controller;
 // 追加: 駐車場検索用コントローラー
 pub mod parking_search_controller;
 
-
+pub mod user_home_controller;
+pub mod use_history_controller;
 
 /// Initialize controllers if needed
 pub fn init() {

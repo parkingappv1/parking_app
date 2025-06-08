@@ -4,6 +4,7 @@ import 'package:parking_app/views/reservation/reservation_confirmation_screen.da
     as confirmation;
 import 'package:parking_app/views/reservation/reservation_usage_datetime_screen.dart';
 import 'package:parking_app/views/auth/signin_screen.dart';
+import 'package:parking_app/views/user/user_home_screen.dart';
 
 class DummyScreen extends StatelessWidget {
   const DummyScreen({super.key});
@@ -109,6 +110,18 @@ class DummyScreen extends StatelessWidget {
             //   },
             //   child: const Text('予約「詳細」画面へ'),
             // ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder:
+                        (context) => UserHomeScreen(user_id: 'user_000001'),
+                  ),
+                );
+              },
+              child: const Text('ユーザーホーム画面へ'),
+            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
