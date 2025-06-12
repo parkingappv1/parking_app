@@ -74,7 +74,6 @@
     "searchPlaceholder",
     "mapView",
     "selectDateTime",
-    "carType",
     "reservationType",
     "searchButton",
     "searchResultsCount",
@@ -93,7 +92,18 @@
     "homeTab",
     "searchTab",
     "historyTab",
-    "accountTab"
+    "accountTab",
+    "selectDateRange",
+    "selectStartDate",
+    "selectEndDate",
+    "selectStartTime",
+    "selectEndTime",
+    "selectDate",
+    "selectTime",
+    "startDate",
+    "endDate",
+    "startTime",
+    "endTime"
   ],
 
   "zh": [
@@ -171,7 +181,6 @@
     "searchPlaceholder",
     "mapView",
     "selectDateTime",
-    "carType",
     "reservationType",
     "searchButton",
     "searchResultsCount",
@@ -190,6 +199,17 @@
     "homeTab",
     "searchTab",
     "historyTab",
-    "accountTab"
+    "accountTab",
+    "selectDateRange",
+    "selectStartDate",
+    "selectEndDate",
+    "selectStartTime",
+    "selectEndTime",
+    "selectDate",
+    "selectTime",
+    "startDate",
+    "endDate",
+    "startTime",
+    "endTime"
   ]
 }

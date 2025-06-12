@@ -523,5 +523,51 @@
     "historys": "入出庫履歴",
     "noUseHistory": "利用履歴情報なし",
     "features": "駐車場の特徴",
-    "nofeatures": "特徴なし"
+    "nofeatures": "特徴なし",
+
+    "selectDateRange": "日付範囲を選択",
+    "@selectDateRange": {
+        "description": "Select date range button text"
+    },
+    "selectStartDate": "開始日を選択",
+    "@selectStartDate": {
+        "description": "Select start date button text"
+    },
+    "selectEndDate": "終了日を選択", 
+    "@selectEndDate": {
+        "description": "Select end date button text"
+    },
+    "selectStartTime": "開始時間を選択",
+    "@selectStartTime": {
+        "description": "Select start time button text"
+    },
+    "selectEndTime": "終了時間を選択",
+    "@selectEndTime": {
+        "description": "Select end time button text"
+    },
+    "selectDate": "日付を選択",
+    "@selectDate": {
+        "description": "Select date placeholder text"
+    },
+    "selectTime": "時間を選択",
+    "@selectTime": {
+        "description": "Select time placeholder text"
+    },
+    "startDate": "開始日",
+    "@startDate": {
+        "description": "Start date label"
+    },
+    "endDate": "終了日",
+    "@endDate": {
+        "description": "End date label"
+    },
+    "startTime": "開始時間",
+    "@startTime": {
+        "description": "Start time label"
+    },
+    "endTime": "終了時間",
+    "@endTime": {
+        "description": "End time label"
+    }
+    
 }
