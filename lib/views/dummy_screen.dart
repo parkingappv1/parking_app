@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parking_app/views/owner/owner_dashboard_screen.dart';
 import 'package:parking_app/views/parking/parking_search_screen.dart';
 import 'package:parking_app/views/reservation/reservation_confirmation_screen.dart'
     as confirmation;
@@ -59,46 +60,35 @@ class DummyScreen extends StatelessWidget {
             //   },
             //   child: const Text('ユーザーホーム画面へ'),
             // ),
-            // const SizedBox(height: 16),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     try {
-            //       // 要件に合わせて修正されたオーナー用AuthUserModelの作成
-            //       final dummyOwner = AuthUserModel(
-            //         id: 'owner_654321',
-            //         name: 'オーナーさん',
-            //         email: 'owner@example.com',
-            //         phoneNumber: '090-8765-4321',
-            //         avatarUrl: 'https://example.com/avatar.jpg',
-            //         token: 'dummy_owner_token',
-            //         refreshToken: 'dummy_owner_refresh_token',
-            //         isEmailVerified: true,
-            //         role: 'owner',
-            //       );
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                try {
+                  final ownerId = 'owner_654321';
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder:
+                          (context) => OwnerDashboardScreen(
+                            ownerId: ownerId,
+                            isOwner: true,
+                          ),
+                    ),
+                  );
+                } catch (e) {
+                  // エラー発生時にスナックバーで表示
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('エラーが発生しました: $e'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                  print('Error: $e');
+                }
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+              child: const Text('オーナーホーム画面へ'),
+            ),
 
-            //       Navigator.of(context).push(
-            //         MaterialPageRoute(
-            //           builder:
-            //               (context) => HomePage(
-            //                 authUserModel: dummyOwner,
-            //                 isOwner: true,
-            //               ),
-            //         ),
-            //       );
-            //     } catch (e) {
-            //       // エラー発生時にスナックバーで表示
-            //       ScaffoldMessenger.of(context).showSnackBar(
-            //         SnackBar(
-            //           content: Text('エラーが発生しました: $e'),
-            //           backgroundColor: Colors.red,
-            //         ),
-            //       );
-            //       print('Error: $e');
-            //     }
-            //   },
-            //   style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-            //   child: const Text('オーナーホーム画面へ'),
-            // ),
             // const SizedBox(height: 16),
             // ElevatedButton(
             //   onPressed: () {

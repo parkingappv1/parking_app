@@ -7,6 +7,7 @@ import 'package:parking_app/views/auth/signin_screen.dart';
 import 'package:parking_app/views/auth/signup_screen.dart';
 import 'package:parking_app/views/auth/verification_code_screen.dart';
 import 'package:parking_app/views/error/error_screen.dart';
+import 'package:parking_app/views/owner/owner_dashboard_screen.dart';
 import 'package:parking_app/views/parking/parking_search_screen.dart';
 
 /// アプリケーションのルーティングを管理するクラス
@@ -73,6 +74,39 @@ class AppRouter {
         // case AppRoutes.HOME:
         //   if (kDebugMode) debugPrint('🏠 ホーム画面へナビゲート（認証保護）');
         //   return _protectedRoute(const HomeScreen(), settings: settings);
+        case AppRoutes.OWNER_DASHBOARD:
+          if (kDebugMode) debugPrint('🏠 駐車場ホーム画面へナビゲート');
+          if (args is Map<String, dynamic>) {
+            final ownerId = args['ownerId'];
+            final isOwner = args['isOwner'];
+
+            return _protectedRoute(
+              OwnerDashboardScreen(
+                ownerId: ownerId,
+                isOwner: isOwner,
+              ),
+              settings: settings,
+            );
+          } else {
+            return _errorRoute('ルート引数が正しくありません');
+          }
+        case AppRoutes.ADD_PARKING_SPACE:
+          if (kDebugMode) debugPrint('🏠 新しい駐車場の登録画面へナビゲート');
+          if (args is Map<String, dynamic>) {
+            final ownerId = args['ownerId'];
+            final isOwner = args['isOwner'];
+
+            return _protectedRoute(
+              OwnerDashboardScreen(
+                ownerId: ownerId,
+                isOwner: isOwner,
+              ),
+              settings: settings,
+            );
+          } else {
+            return _errorRoute('ルート引数が正しくありません');
+          }
+
 
         // ===== エラーハンドリング画面 =====
 

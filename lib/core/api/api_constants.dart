@@ -149,6 +149,14 @@ class ApiConstants {
   /// アバター画像アップロード
   static const String UPLOAD_AVATAR = '$USER_BASE/upload-avatar';
 
+
+  // ==================== Owner関連エンドポイント ====================
+  // Owner endpoints
+  static const String OWNER_BASE = '/owner';
+  static const String CREATE_PARKING_LOT = '$OWNER_BASE/add-parking-space';
+  static const String GET_PARKING_LOTS_BY_OWNER_ID = '$OWNER_BASE/parking-lot/by-owner-id';
+  static const String UPLOAD_PARKING_LOT_IMAGES = '$OWNER_BASE/parking-lot-images/upload';
+  
   // ==================== 駐車場関連エンドポイント ====================
 
   /// 駐車場ベースパス

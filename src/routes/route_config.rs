@@ -8,6 +8,8 @@ use crate::controllers::auth_signin_controller::{
     signin, signout, refresh_token, get_current_user,
     request_password_reset, verify_password_reset, complete_password_reset
 };
+use crate::controllers::parking_lots_controller::{add_parking_space_controller};
+use crate::controllers::parking_lots_image_controller::upload_parking_lot_images_controller;
 use crate::controllers::parking_search_controller::{
     search_parking_lots_controller,
     get_favorite_parking_lots_controller,
@@ -58,6 +60,13 @@ pub fn init_routes(cfg: &mut web::ServiceConfig) {
             .service(get_favorite_parking_lots_controller)
             .service(manage_favorite_parking_lot_controller)
             .service(get_parking_lot_detail_controller)
+    );
+
+    // Parking search routes
+    cfg.service(
+        web::scope("/v1/api/owner")
+            .service(add_parking_space_controller)
+            .service(upload_parking_lot_images_controller)
     );
 
     // 示例：带参数的 resource 路由

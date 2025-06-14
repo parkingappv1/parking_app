@@ -27,6 +27,8 @@ pub use auth_signup_service::AuthSignupService;
 /// Parking search service for parking lot search functionality.
 pub mod parking_search_service;
 pub use parking_search_service::ParkingSearchService;
+pub mod parking_lots_service;
+pub use parking_lots_service::ParkingLotsService;
 
 pub mod user_home_service;
 pub use user_home_service::UserHomeService;

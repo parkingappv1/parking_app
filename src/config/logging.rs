@@ -1,4 +1,4 @@
-use chrono::Local;
+use chrono::{DateTime, Local, NaiveDate, Utc};
 use std::{env, io, path::Path};
 use tracing::{info, Level};
 use tracing_appender::{
@@ -200,23 +200,47 @@ pub fn set_module_log_level(module: &str, level: Level) {
 #[derive(Debug, Clone)]
 pub enum SqlParam {
     String(String),
+    OptionString(Option<String>), // 新增
     Integer(i64),
+    I32(i32),                  // ✅ 新增：显式支持 i32
+    OptionI32(Option<i32>),    // ✅ 新增：可选的 i32
     Float(f64),
     Boolean(bool),
     Null,
+    Date(NaiveDate),
+    OptionDate(Option<NaiveDate>),
+    DateTime(DateTime<Utc>),                 
+    OptionDateTime(Option<DateTime<Utc>>), 
 }
+
 
 impl std::fmt::Display for SqlParam {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             SqlParam::String(s) => write!(f, "'{}'", s.replace('\'', "''")),
+            SqlParam::OptionString(opt) => match opt {
+                Some(s) => write!(f, "'{}'", s.replace('\'', "''")),
+                None => write!(f, "NULL"),
+            },
             SqlParam::Integer(i) => write!(f, "{}", i),
+            SqlParam::I32(i) => write!(f, "{}", i),
+            SqlParam::OptionI32(opt) => match opt {
+                Some(i) => write!(f, "{}", i),
+                None => write!(f, "NULL"),
+            },
             SqlParam::Float(fl) => write!(f, "{}", fl),
             SqlParam::Boolean(b) => write!(f, "{}", b),
             SqlParam::Null => write!(f, "NULL"),
+            SqlParam::Date(d) => write!(f, "'{}'", d),
+            SqlParam::OptionDate(Some(d)) => write!(f, "'{}'", d),
+            SqlParam::OptionDate(None) => write!(f, "NULL"),
+            SqlParam::DateTime(dt) => write!(f, "'{}'", dt.to_rfc3339()),
+            SqlParam::OptionDateTime(Some(dt)) => write!(f, "'{}'", dt.to_rfc3339()),
+            SqlParam::OptionDateTime(None) => write!(f, "NULL"),
         }
     }
 }
+
 
 /// SQLクエリをパラメータ置換でフォーマット
 pub fn format_sql_query(query: &str, params: &[SqlParam]) -> String {

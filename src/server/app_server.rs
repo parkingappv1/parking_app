@@ -1,8 +1,8 @@
 use actix_web::{App, HttpServer, middleware::Logger, web};
-use crate::config::{
+use crate::{config::{
     logging::{init_logger, LogConfig},
     postgresql_database::{DatabaseConfig, PostgresDatabase},
-};
+}, services::ParkingLotsService};
 use crate::middlewares::{
     cors_middleware::configure_cors,
     csrf_middleware::CsrfMiddleware,
@@ -59,6 +59,9 @@ pub async fn start_server() -> std::io::Result<()> {
     
     // 駐車場検索サービスの初期化（同一のデータベース接続を使用）
     let parking_search_service = web::Data::new(ParkingSearchService::new(database.clone()));
+    
+    // 駐車場登録サービスの初期化（同一のデータベース接続を使用）
+    let parking_lots_service = web::Data::new(ParkingLotsService::new(database.clone()));
     info!("認証サービスと駐車場検索サービスが初期化されました");
 
     // サーバーのホストとポート設定を環境変数から取得
@@ -123,6 +126,7 @@ pub async fn start_server() -> std::io::Result<()> {
             .app_data(auth_signup_service.clone())
             .app_data(auth_signin_service.clone())
             .app_data(parking_search_service.clone())
+            .app_data(parking_lots_service.clone())
 
             // ミドルウェアの適用（適用順序が重要）
             // 1. エラーハンドリング（最外層）
@@ -159,6 +163,8 @@ pub async fn start_server() -> std::io::Result<()> {
                 .exempt("/api/parking/nearby")              // 近隣駐車場検索
                 .exempt("/api/parking/filters")             // 検索フィルター取得
                 .exempt("/api/parking/stats")               // 駐車場統計情報
+                .exempt("/v1/api/owner/add-parking-space")               // 駐車場追加情報
+                .exempt("/v1/api/owner/parking-lot-images/upload")               // 駐車場画像アップロード
             )
 
             // ルート設定の適用

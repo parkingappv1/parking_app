@@ -25,6 +25,8 @@ pub use auth_signup_repository::AuthSignupRepository;
 /// Repository for parking search operations
 pub mod parking_search_repository;
 pub use parking_search_repository::ParkingSearchRepository;
+pub mod parking_lots_repository;
+pub use parking_lots_repository::ParkingLotsRepository;
 
 pub mod user_home_repository;
 pub use user_home_repository::UserHomeRepository;

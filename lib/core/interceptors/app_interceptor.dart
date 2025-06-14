@@ -51,7 +51,7 @@ class AppInterceptors extends Interceptor {
   }) : getToken = getToken ?? TokenService().getAccessToken,
        refreshToken = refreshToken ?? TokenService().refreshToken {
     if (kDebugMode) {
-      debugPrint('🔧 AppInterceptors初期化完了');
+      debugPrint('🔧 （app_interceptor.dart）AppInterceptors初期化完了');
       debugPrint(
         '📊 設定: ログ=$enableLogging, キャッシュ=$enableCache, リトライ=$enableRetry',
       );
@@ -74,7 +74,7 @@ class AppInterceptors extends Interceptor {
       if (enableCache && _isGetRequest(options)) {
         final cachedResponse = _getCachedResponse(options);
         if (cachedResponse != null) {
-          if (kDebugMode) debugPrint('📦 キャッシュからレスポンス返却: ${options.uri}');
+          if (kDebugMode) debugPrint('📦 （app_interceptor.dart）キャッシュからレスポンス返却: ${options.uri}');
           return handler.resolve(cachedResponse);
         }
       }
@@ -92,7 +92,7 @@ class AppInterceptors extends Interceptor {
 
       return handler.next(options);
     } catch (e) {
-      if (kDebugMode) debugPrint('💥 リクエストインターセプターエラー: $e');
+      if (kDebugMode) debugPrint('💥 （app_interceptor.dart）リクエストインターセプターエラー: $e');
       return handler.reject(
         DioException(
           requestOptions: options,
@@ -122,7 +122,7 @@ class AppInterceptors extends Interceptor {
 
       return handler.next(processedResponse);
     } catch (e) {
-      if (kDebugMode) debugPrint('💥 レスポンスインターセプターエラー: $e');
+      if (kDebugMode) debugPrint('💥 （app_interceptor.dart）レスポンスインターセプターエラー: $e');
       return handler.next(response); // エラーが発生してもレスポンスは返す
     }
   }
@@ -439,7 +439,7 @@ class AppInterceptors extends Interceptor {
           responseData.containsKey('data')) {
         final code = responseData['code'];
 
-        if (code == 0 || code == 200) {
+        if (code == 0 || code == 200 || code == 201) {
           // 成功時はdataフィールドを抽出
           response.data = responseData['data'];
         } else {

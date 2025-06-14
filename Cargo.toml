@@ -16,6 +16,8 @@ path = "src/main.rs"
 actix-web = "4.11.0"
 actix-rt = "2.9.0"
 actix-cors = "0.7.1"
+actix-multipart = "0.7.2"
+sanitize-filename = "0.6.0"
 
 # Database
 sqlx = { version = "0.8.5", features = ["runtime-tokio-rustls", "postgres", "macros", "uuid", "chrono", "json", "time"] }

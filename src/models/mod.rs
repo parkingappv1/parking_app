@@ -15,6 +15,7 @@ pub mod t_parking_rental_types_model;
 pub mod m_parking_vehicle_types_model;
 pub mod m_parking_features_model;
 pub mod parking_search_model;
+pub mod parking_lots_model;
 
 // UserHome-related models
 pub mod parking_status_model;
@@ -31,6 +32,7 @@ pub use auth_signin_model::{
 pub use parking_status_model::{ ParkingStatusRequest, ParkingStatusResponse, UpdateParkingStatusRequest};
 pub use parking_search_history_model::{ParkingSearchHistoryRequest, ParkingSearchHistoryResponse};
 pub use favorites_model::{FavoritesRequest, FavoriteResponse};
+pub use parking_lots_model::{ParkingLotRequest, ParkingLotResponse,ParkingImageRequest};
 
 pub use parking_use_history_model::{ParkingUseHistoryRequest, ParkingUseHistoryDetailRequest, ParkingUseHistoryResponse, ParkingUseHistoryDetailResponse};
 pub use parking_feature_model::{ParkingFeatureRequest, ParkingFeatureResponse};

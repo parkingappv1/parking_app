@@ -158,6 +158,24 @@ impl ResponseError for ApiError {
     }
 }
 
+
+impl From<DatabaseError> for ApiError {
+    fn from(err: DatabaseError) -> Self {
+        match err {
+            DatabaseError::DuplicateError(msg) => ApiError::DuplicateError(msg),
+            DatabaseError::ValidationError(msg) => ApiError::ValidationError(msg),
+            DatabaseError::NotFound(msg) => ApiError::NotFoundError(msg),
+            DatabaseError::TransactionError(msg) => ApiError::DatabaseError(msg),
+            DatabaseError::Other(msg) => ApiError::DatabaseError(msg),
+            DatabaseError::ConnectionError(msg) => ApiError::ValidationError(msg),
+            DatabaseError::QueryError(msg) => ApiError::ValidationError(msg),
+            DatabaseError::TimeoutError => ApiError::InternalServerError,
+            DatabaseError::RowNotFound => ApiError::InternalServerError
+        }
+    }
+}
+
+
 // 共通のエラー型からのコンバージョン
 impl From<sqlx::Error> for ApiError {
     fn from(error: sqlx::Error) -> ApiError {

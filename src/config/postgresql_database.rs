@@ -24,6 +24,18 @@ pub enum DatabaseError {
 
     #[error("行が見つかりません")]
     RowNotFound,
+
+    #[error("重複エラー: {}", _0)]
+    DuplicateError(String),
+
+    #[error("バリデーションエラー: {}", _0)]
+    ValidationError(String),
+
+    #[error("リソースが見つかりません: {}", _0)]
+    NotFound(String),
+
+    #[error("その他のエラー: {0}")]
+    Other(String),  // <--- Add this
 }
 
 pub struct DatabaseConfig {
