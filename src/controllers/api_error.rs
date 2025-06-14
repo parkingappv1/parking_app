@@ -4,6 +4,7 @@ use serde::Serialize;
 use std::fmt::{self, Debug};
 use tracing::{debug, error, warn};
 use uuid::Uuid;
+use crate::config::postgresql_database::DatabaseError;
 
 /// API エラー列挙型
 /// アプリケーション全体で使用される統一的なエラータイプ
@@ -165,15 +166,16 @@ impl From<DatabaseError> for ApiError {
             DatabaseError::DuplicateError(msg) => ApiError::DuplicateError(msg),
             DatabaseError::ValidationError(msg) => ApiError::ValidationError(msg),
             DatabaseError::NotFound(msg) => ApiError::NotFoundError(msg),
-            DatabaseError::TransactionError(msg) => ApiError::DatabaseError(msg),
+            DatabaseError::TransactionError(ref msg) => ApiError::DatabaseError(msg.to_string()),
             DatabaseError::Other(msg) => ApiError::DatabaseError(msg),
-            DatabaseError::ConnectionError(msg) => ApiError::ValidationError(msg),
-            DatabaseError::QueryError(msg) => ApiError::ValidationError(msg),
-            DatabaseError::TimeoutError => ApiError::InternalServerError,
-            DatabaseError::RowNotFound => ApiError::InternalServerError
+            DatabaseError::ConnectionError(msg) => ApiError::ServiceUnavailableError(msg),
+            DatabaseError::QueryError(msg) => ApiError::BadRequestError(msg),
+            DatabaseError::TimeoutError => ApiError::ServiceUnavailableError("データベースタイムアウトエラー".to_string()),
+            DatabaseError::RowNotFound => ApiError::NotFoundError("行が見つかりません".to_string()),
         }
     }
 }
+
 
 
 // 共通のエラー型からのコンバージョン
